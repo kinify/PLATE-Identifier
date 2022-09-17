@@ -1,0 +1,55 @@
+def main():
+    plate = input("Plate: ").upper()
+    if is_valid(plate):
+        print("Valid")
+    else:
+        print("Invalid")
+
+
+def is_valid(s):
+
+    if len(s) < 2 or len(s) > 6:
+        return False
+
+
+    if not s[0].isalpha() or not s[1].isalpha():
+        return False
+
+    #we need to iterate over the string and check that there is no alphabets after a number
+    #AAA222
+    #iterate in the string
+    #check if iteration
+    index_of_number = 0
+    for i in range(len(s)):
+        if s[i].isdigit():
+            index_of_number = i
+            break
+        if not s[i].isalnum():
+            return False
+
+
+
+
+    #we need to make sure that there is no alphabetical letter after index_of_number
+    for i in range(index_of_number, len(s)):
+        if s[i].isalpha():
+            return False
+
+
+    return True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+main()
